@@ -26,29 +26,32 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Flutter App"),
       ),
-      body: Column(children: <Widget>[
-        Card(
-          child: Container(
-            child: Text(
-              "Chart",
-              textAlign: TextAlign.center,
+      body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: <Widget>[
+            Card(
+              child: Container(
+                child: Text(
+                  "Chart",
+                  textAlign: TextAlign.center,
+                ),
+                width: double.infinity,
+                //double.infinity, to make the card as wide as the screen
+              ),
+              //a card size depends on the content widget
+              //we need to wrap card widget inside a widget where we can change size
+              color: Colors.green[600],
+              elevation: 5,
             ),
-            width: double.infinity,
-            //double.infinity, to make the card as wide as the screen
-          ),
-          //a card size depends on the content widget
-          //we need to wrap card widget inside a widget where we can change size
-          color: Colors.green[600],
-          elevation: 5,
-        ),
-        Container(
-          child: Card(
-            child: Text("List of texts"),
-            color: Colors.blue,
-          ),
-          width: double.infinity,
-        ),
-      ]),
+            Container(
+              child: Card(
+                child: Text("List of texts"),
+                color: Colors.blue,
+              ),
+              // width: double.infinity,
+            ),
+          ]),
     );
   }
 }
