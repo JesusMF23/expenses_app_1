@@ -6,8 +6,9 @@ import './transaction_list.dart';
 class NewTransaction extends StatelessWidget {
   final titleController = TextEditingController();
   final amountController = TextEditingController();
+  final Function addNewTransaction;
 
-  get addNewTransaction => addNewTransaction;
+  NewTransaction({required this.addNewTransaction});
 
   @override
   Widget build(BuildContext context) {
@@ -49,14 +50,8 @@ class NewTransaction extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-              addNewTransaction;
-              print(amountController.text);
-              print(titleController.text);
-              // transactions.add(Transaction(
-              //     id: DateTime.now().toString(),
-              //     title: titleController.text,
-              //     amount: double.parse(amountController.text),
-              //     date: DateTime.now()));
+              addNewTransaction(
+                  titleController.text, double.parse(amountController.text));
             },
             child: Text("Add transaction",
                 style: TextStyle(color: Colors.green[800])),
