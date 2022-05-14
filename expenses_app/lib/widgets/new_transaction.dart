@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import './transaction_list.dart';
 
 class NewTransaction extends StatelessWidget {
   final titleController = TextEditingController();
   final amountController = TextEditingController();
+
+  get addNewTransaction => addNewTransaction;
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +49,7 @@ class NewTransaction extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
+              addNewTransaction;
               print(amountController.text);
               print(titleController.text);
               // transactions.add(Transaction(

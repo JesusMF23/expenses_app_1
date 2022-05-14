@@ -10,11 +10,11 @@ class UserTransactions extends StatefulWidget {
   const UserTransactions({Key? key}) : super(key: key);
 
   @override
-  State<UserTransactions> createState() => UserTransactionsState();
+  State<UserTransactions> createState() => _UserTransactionsState();
 }
 
-class UserTransactionsState extends State<UserTransactions> {
-  final List<Transaction> userTransactions = [
+class _UserTransactionsState extends State<UserTransactions> {
+  final List<Transaction> _userTransactions = [
     Transaction(
       id: 't1',
       title: 'New Shoes',
@@ -28,10 +28,27 @@ class UserTransactionsState extends State<UserTransactions> {
       date: DateTime.now(),
     ),
   ];
+
+  void addNewTransaction(String txTitle, double txAmount) {
+    final newTx = Transaction(
+      title: txTitle,
+      amount: txAmount,
+      date: DateTime.now(),
+      id: DateTime.now().toString(),
+    );
+
+    setState(() {
+      _userTransactions.add(newTx);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: <Widget>[NewTransaction(), TransactionList()],
+      children: <Widget>[
+        NewTransaction(),
+        TransactionList(transactions: _userTransactions)
+      ],
     );
   }
 }

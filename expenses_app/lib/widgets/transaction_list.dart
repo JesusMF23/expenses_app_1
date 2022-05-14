@@ -3,13 +3,16 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:intl/intl.dart';
 import '../models/transaction.dart';
-import './user_transactions.dart';
 
 class TransactionList extends StatelessWidget {
+  final List<Transaction> transactions;
+
+  TransactionList({required this.transactions});
+
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: userTransactions.map((tx) {
+      children: transactions.map((tx) {
         //dynamically build widgets mapping each transaction to a widget
         return Card(
           child: Row(

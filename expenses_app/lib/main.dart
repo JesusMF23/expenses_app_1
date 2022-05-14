@@ -1,7 +1,5 @@
-import 'package:expenses_app/widgets/new_transaction.dart';
-import 'package:expenses_app/widgets/transaction_list.dart';
+import 'package:expenses_app/widgets/user_transactions.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 void main() {
@@ -56,8 +54,7 @@ class MyHomePage extends StatelessWidget {
               //a card size depends on the content widget
               //we need to wrap card widget inside a widget where we can change size
             ),
-            NewTransaction(),
-            TransactionList()
+            UserTransactions()
           ]),
     );
   }
