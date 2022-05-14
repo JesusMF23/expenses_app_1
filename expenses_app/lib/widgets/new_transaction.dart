@@ -10,6 +10,21 @@ class NewTransaction extends StatelessWidget {
 
   NewTransaction({required this.addNewTransaction});
 
+  void submitData() {
+    final enteredTitle = titleController.text;
+    final enteredAmount = double.parse(amountController.text);
+
+    if (enteredTitle.isEmpty || enteredAmount <= 0) {
+      return;
+      //return stops the function from running, we don't each the function to run
+    }
+
+    addNewTransaction(
+      enteredTitle,
+      enteredAmount,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -30,6 +45,7 @@ class NewTransaction extends StatelessWidget {
                         BorderSide(color: Color.fromARGB(255, 46, 125, 50)))),
             cursorColor: Colors.green[600],
             controller: titleController,
+            onSubmitted: (_) => submitData(),
             // onChanged: (val) {
             //   titleInput = val;
             // },
@@ -46,13 +62,13 @@ class NewTransaction extends StatelessWidget {
                         BorderSide(color: Color.fromARGB(255, 46, 125, 50)))),
             cursorColor: Colors.green[600],
             controller: amountController,
+            keyboardType: TextInputType.number,
+            onSubmitted: (_) => submitData(),
+            // we use _ when flutter needs a parameter but we don't need it
             // onChanged: (val) => amountInput = val,
           ),
           TextButton(
-            onPressed: () {
-              addNewTransaction(
-                  titleController.text, double.parse(amountController.text));
-            },
+            onPressed: submitData,
             child: Text("Add transaction",
                 style: TextStyle(color: Colors.green[800])),
           )

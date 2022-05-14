@@ -24,18 +24,18 @@ class TransactionList extends StatelessWidget {
                       horizontal: 15,
                     ),
                     child: Text(
-                      "\$ ${transactions[index].amount}",
+                      "\$ ${transactions[index].amount.toStringAsFixed(2)}",
                       // \$ is a special character in dart
                       //interpolating string to call variables
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        color: Colors.purple[800],
+                        color: Colors.red[900],
                       ),
                     ),
                     decoration: BoxDecoration(
                         border: Border.all(
-                      color: Color.fromARGB(255, 106, 27, 154),
+                      color: Color.fromARGB(255, 183, 28, 28),
                       width: 2,
                     )),
                     padding: EdgeInsets.all(10)),
