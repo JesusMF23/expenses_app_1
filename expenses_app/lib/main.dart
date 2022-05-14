@@ -64,7 +64,9 @@ class MyHomePage extends StatelessWidget {
                             horizontal: 15,
                           ),
                           child: Text(
-                            tx.amount.toString(),
+                            "\$ ${tx.amount}",
+                            // \$ is a special character in dart
+                            //interpolating string to call variables
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
