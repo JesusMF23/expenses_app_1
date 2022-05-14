@@ -29,6 +29,11 @@ class MyHomePage extends StatelessWidget {
     Transaction(
         id: "t2", title: "Groceries", amount: 14.99, date: DateTime.now()),
   ];
+  // late String titleInput;
+  // late String amountInput;
+
+  final titleController = TextEditingController();
+  final amountController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -74,6 +79,10 @@ class MyHomePage extends StatelessWidget {
                                 borderSide: BorderSide(
                                     color: Color.fromARGB(255, 46, 125, 50)))),
                         cursorColor: Colors.green[600],
+                        controller: titleController,
+                        // onChanged: (val) {
+                        //   titleInput = val;
+                        // },
                       ),
                       TextField(
                         decoration: InputDecoration(
@@ -86,11 +95,22 @@ class MyHomePage extends StatelessWidget {
                                 borderSide: BorderSide(
                                     color: Color.fromARGB(255, 46, 125, 50)))),
                         cursorColor: Colors.green[600],
+                        controller: amountController,
+                        // onChanged: (val) => amountInput = val,
                       ),
                       TextButton(
-                          onPressed: () {},
-                          child: Text("Add transaction",
-                              style: TextStyle(color: Colors.green[800])))
+                        onPressed: () {
+                          print(amountController.text);
+                          print(titleController.text);
+                          // transactions.add(Transaction(
+                          //     id: DateTime.now().toString(),
+                          //     title: titleInput,
+                          //     amount: double.parse(amountInput),
+                          //     date: DateTime.now()));
+                        },
+                        child: Text("Add transaction",
+                            style: TextStyle(color: Colors.green[800])),
+                      )
                     ]),
               ),
             ),
