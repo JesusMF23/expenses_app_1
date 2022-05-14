@@ -1,5 +1,7 @@
 import 'package:expenses_app/transaction.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,6 +32,8 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    initializeDateFormatting("es_ES", null);
+    //initialize locale formating
     return Scaffold(
       appBar: AppBar(
         title: Text("Flutter App"),
@@ -90,7 +94,7 @@ class MyHomePage extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            tx.date.toString(),
+                            DateFormat.yMEd("es_ES").format(tx.date),
                             style: TextStyle(
                               fontSize: 12,
                               color: Colors.grey[600],
