@@ -39,22 +39,60 @@ class MyHomePage extends StatelessWidget {
         title: Text("Flutter App"),
       ),
       body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
-            Card(
-              child: Container(
+            Container(
+              child: Card(
                 child: Text(
                   "Chart",
                   textAlign: TextAlign.center,
                 ),
-                width: double.infinity,
+                color: Colors.green[600],
+                elevation: 5,
                 //double.infinity, to make the card as wide as the screen
               ),
+              width: double.infinity,
               //a card size depends on the content widget
               //we need to wrap card widget inside a widget where we can change size
-              color: Colors.green[600],
+            ),
+            Card(
               elevation: 5,
+              child: Container(
+                padding: EdgeInsets.all(10),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: <Widget>[
+                      TextField(
+                        decoration: InputDecoration(
+                            labelText: "Title",
+                            labelStyle: TextStyle(color: Colors.green[800]),
+                            enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Color.fromARGB(255, 46, 125, 50))),
+                            focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Color.fromARGB(255, 46, 125, 50)))),
+                        cursorColor: Colors.green[600],
+                      ),
+                      TextField(
+                        decoration: InputDecoration(
+                            labelText: "Amount",
+                            labelStyle: TextStyle(color: Colors.green[800]),
+                            enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Color.fromARGB(255, 46, 125, 50))),
+                            focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Color.fromARGB(255, 46, 125, 50)))),
+                        cursorColor: Colors.green[600],
+                      ),
+                      TextButton(
+                          onPressed: () {},
+                          child: Text("Add transaction",
+                              style: TextStyle(color: Colors.green[800])))
+                    ]),
+              ),
             ),
             Column(
               children: transactions.map((tx) {
