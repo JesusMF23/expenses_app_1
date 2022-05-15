@@ -32,6 +32,32 @@ class MyApp extends StatelessWidget {
           onError: Colors.white,
           brightness: Brightness.light,
         ),
+        fontFamily: 'Quicksand',
+        textTheme: ThemeData.light().textTheme.copyWith(
+              headline6: TextStyle(
+                fontFamily: "OpenSans",
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+              bodyText2: TextStyle(
+                fontFamily: "OpenSans",
+                fontWeight: FontWeight.w500,
+                fontSize: 10,
+                color: Colors.grey[600],
+              ),
+            ),
+        appBarTheme: AppBarTheme(
+          titleTextStyle: ThemeData.light()
+              .textTheme
+              .copyWith(
+                headline6: TextStyle(
+                    fontFamily: 'OpenSans',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              )
+              .headline6,
+        ),
       ),
       home: MyHomePage(),
     );
@@ -88,7 +114,9 @@ class _MyHomePageState extends State<MyHomePage> {
     //initialize locale formating
     return Scaffold(
       appBar: AppBar(
-        title: Text("Expenses App"),
+        title: Text(
+          "Expenses App",
+        ),
         actions: [
           IconButton(
               onPressed: () => _startAddNewTransaction(context),
