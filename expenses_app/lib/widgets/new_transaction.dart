@@ -3,12 +3,19 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import './transaction_list.dart';
 
-class NewTransaction extends StatelessWidget {
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
+class NewTransaction extends StatefulWidget {
   final Function addNewTransaction;
 
   NewTransaction({required this.addNewTransaction});
+
+  @override
+  State<NewTransaction> createState() => _NewTransactionState();
+}
+
+class _NewTransactionState extends State<NewTransaction> {
+  final titleController = TextEditingController();
+
+  final amountController = TextEditingController();
 
   void submitData() {
     final enteredTitle = titleController.text;
@@ -19,10 +26,13 @@ class NewTransaction extends StatelessWidget {
       //return stops the function from running, we don't each the function to run
     }
 
-    addNewTransaction(
+    //with widget.addNewTransaction we can access the function from the other class
+    widget.addNewTransaction(
       enteredTitle,
       enteredAmount,
     );
+
+    Navigator.pop(context);
   }
 
   @override
@@ -45,7 +55,9 @@ class NewTransaction extends StatelessWidget {
                         BorderSide(color: Color.fromARGB(255, 46, 125, 50)))),
             cursorColor: Colors.green[600],
             controller: titleController,
-            onSubmitted: (_) => submitData(),
+            onSubmitted: (_) {
+              submitData();
+            },
             // onChanged: (val) {
             //   titleInput = val;
             // },
@@ -63,12 +75,16 @@ class NewTransaction extends StatelessWidget {
             cursorColor: Colors.green[600],
             controller: amountController,
             keyboardType: TextInputType.number,
-            onSubmitted: (_) => submitData(),
+            onSubmitted: (_) {
+              submitData();
+            },
             // we use _ when flutter needs a parameter but we don't need it
             // onChanged: (val) => amountInput = val,
           ),
           TextButton(
-            onPressed: submitData,
+            onPressed: () {
+              submitData();
+            },
             child: Text("Add transaction",
                 style: TextStyle(color: Colors.green[800])),
           )
