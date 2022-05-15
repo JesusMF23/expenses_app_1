@@ -14,9 +14,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Expenses App',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.blueGrey,
+        colorScheme: ColorScheme(
+          primary: Colors.blueGrey,
+          primaryContainer: Colors.blueGrey[800],
+          secondary: Color.fromARGB(255, 38, 56, 39),
+          secondaryContainer: Colors.blueGrey[900],
+          surface: Color.fromARGB(255, 38, 50, 56),
+          background: Color.fromARGB(255, 38, 50, 56),
+          error: Colors.red,
+          onPrimary: Colors.white,
+          onSecondary: Colors.white,
+          onSurface: Colors.white,
+          onBackground: Colors.white,
+          onError: Colors.white,
+          brightness: Brightness.light,
+        ),
       ),
       home: MyHomePage(),
     );
@@ -73,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
     //initialize locale formating
     return Scaffold(
       appBar: AppBar(
-        title: Text("Flutter App"),
+        title: Text("Expenses App"),
         actions: [
           IconButton(
               onPressed: () => _startAddNewTransaction(context),
@@ -91,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     "Chart",
                     textAlign: TextAlign.center,
                   ),
-                  color: Colors.green[600],
+                  color: Theme.of(context).primaryColorDark,
                   elevation: 5,
                   //double.infinity, to make the card as wide as the screen
                 ),
