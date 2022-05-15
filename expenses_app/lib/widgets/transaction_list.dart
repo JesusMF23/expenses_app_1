@@ -12,52 +12,76 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,
       height: 400,
-      child: ListView.builder(
-        itemBuilder: (context, index) {
-          return Card(
-            child: Row(
-              children: <Widget>[
-                Container(
-                    margin: EdgeInsets.symmetric(
-                      vertical: 10,
-                      horizontal: 15,
-                    ),
-                    child: Text(
-                      "\$ ${transactions[index].amount.toStringAsFixed(2)}",
-                      // \$ is a special character in dart
-                      //interpolating string to call variables
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).primaryColorDark,
-                      ),
-                    ),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                      color: Theme.of(context).primaryColorLight,
-                      width: 2,
-                    )),
-                    padding: EdgeInsets.all(10)),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+      child:
+          //if statement to check if the list is empty
+          transactions.isEmpty
+              ? Column(
                   children: <Widget>[
                     Text(
-                      transactions[index].title,
+                      "No Transactions",
                       style: Theme.of(context).textTheme.headline6,
                     ),
-                    Text(
-                      DateFormat.yMEd("es_ES").format(transactions[index].date),
-                      style: Theme.of(context).textTheme.bodyText2,
-                    )
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      height: 300,
+                      child: Image.asset(
+                        "assets/images/waiting.png",
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ],
                 )
-              ],
-            ),
-          );
-        },
-        itemCount: transactions.length,
-      ),
+              //if not empty, display the list
+              : ListView.builder(
+                  itemBuilder: (context, index) {
+                    return Card(
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                              margin: EdgeInsets.symmetric(
+                                vertical: 10,
+                                horizontal: 15,
+                              ),
+                              child: Text(
+                                "\$ ${transactions[index].amount.toStringAsFixed(2)}",
+                                // \$ is a special character in dart
+                                //interpolating string to call variables
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).primaryColorDark,
+                                ),
+                              ),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                color: Theme.of(context).primaryColorLight,
+                                width: 2,
+                              )),
+                              padding: EdgeInsets.all(10)),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                transactions[index].title,
+                                style: Theme.of(context).textTheme.headline6,
+                              ),
+                              Text(
+                                DateFormat.yMEd("es_ES")
+                                    .format(transactions[index].date),
+                                style: Theme.of(context).textTheme.bodyText2,
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    );
+                  },
+                  itemCount: transactions.length,
+                ),
     );
   }
 }
