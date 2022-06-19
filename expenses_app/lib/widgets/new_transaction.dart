@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:intl/intl.dart';
 import './transaction_list.dart';
 
 class NewTransaction extends StatefulWidget {
@@ -13,13 +14,13 @@ class NewTransaction extends StatefulWidget {
 }
 
 class _NewTransactionState extends State<NewTransaction> {
-  final titleController = TextEditingController();
+  final _titleController = TextEditingController();
+  final _amountController = TextEditingController();
+  DateTime? _selectedDate;
 
-  final amountController = TextEditingController();
-
-  void submitData() {
-    final enteredTitle = titleController.text;
-    final enteredAmount = double.parse(amountController.text);
+  void _submitData() {
+    final enteredTitle = _titleController.text;
+    final enteredAmount = double.parse(_amountController.text);
 
     if (enteredTitle.isEmpty || enteredAmount <= 0) {
       return;
@@ -33,6 +34,22 @@ class _NewTransactionState extends State<NewTransaction> {
     );
 
     Navigator.pop(context);
+  }
+
+  void _presentDatePicker() {
+    showDatePicker(
+            context: context,
+            initialDate: DateTime.now(),
+            firstDate: DateTime(2022),
+            lastDate: DateTime.now())
+        .then((pickedDate) {
+      if (pickedDate == null) {
+        return;
+      }
+      setState(() {
+        _selectedDate = pickedDate;
+      });
+    });
   }
 
   @override
@@ -56,9 +73,9 @@ class _NewTransactionState extends State<NewTransaction> {
                         borderSide: BorderSide(
                             color: Theme.of(context).primaryColorLight))),
                 cursorColor: ThemeData.light().textSelectionTheme.cursorColor,
-                controller: titleController,
+                controller: _titleController,
                 onSubmitted: (_) {
-                  submitData();
+                  _submitData();
                 },
                 // onChanged: (val) {
                 //   titleInput = val;
@@ -76,10 +93,10 @@ class _NewTransactionState extends State<NewTransaction> {
                         borderSide: BorderSide(
                             color: Theme.of(context).primaryColorLight))),
                 cursorColor: ThemeData.light().textSelectionTheme.cursorColor,
-                controller: amountController,
+                controller: _amountController,
                 keyboardType: TextInputType.number,
                 onSubmitted: (_) {
-                  submitData();
+                  _submitData();
                 },
                 // we use _ when flutter needs a parameter but we don't need it
                 // onChanged: (val) => amountInput = val,
@@ -88,9 +105,13 @@ class _NewTransactionState extends State<NewTransaction> {
                 height: 70,
                 child: Row(
                   children: <Widget>[
-                    Text("No Date Chosen!"),
+                    Expanded(
+                      child: Text(_selectedDate == null
+                          ? "No Date Chosen!"
+                          : "Picked Date: ${DateFormat.yMMMd().format(_selectedDate!)}"),
+                    ),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: _presentDatePicker,
                         child: Text(
                           "Choose Date",
                           style: TextStyle(
@@ -102,7 +123,7 @@ class _NewTransactionState extends State<NewTransaction> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  submitData();
+                  _submitData();
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(

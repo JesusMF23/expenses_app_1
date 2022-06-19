@@ -22,14 +22,14 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme(
           primary: Colors.blueGrey,
           primaryContainer: Colors.blueGrey[800],
-          secondary: Color.fromARGB(255, 38, 56, 39),
+          secondary: Color.fromARGB(255, 144, 202, 249),
           secondaryContainer: Colors.blueGrey[900],
           surface: Color.fromARGB(255, 38, 50, 56),
           background: Color.fromARGB(255, 38, 50, 56),
           error: Colors.red,
           onPrimary: Colors.white,
-          onSecondary: Colors.white,
-          onSurface: Colors.white,
+          onSecondary: Colors.blueGrey,
+          onSurface: Colors.blueGrey,
           onBackground: Colors.white,
           onError: Colors.white,
           brightness: Brightness.light,
@@ -37,8 +37,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Quicksand',
         textSelectionTheme: TextSelectionThemeData(
           cursorColor: Color.fromARGB(255, 38, 56, 39),
-          selectionColor: Color.fromARGB(255, 38, 56, 39),
-          selectionHandleColor: Color.fromARGB(255, 38, 56, 39),
+          selectionColor: Colors.white,
         ),
         textTheme: ThemeData.light().textTheme.copyWith(
             headline6: TextStyle(
