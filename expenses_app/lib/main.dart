@@ -36,18 +36,18 @@ class MyApp extends StatelessWidget {
         ),
         fontFamily: 'Quicksand',
         textTheme: ThemeData.light().textTheme.copyWith(
-              headline6: TextStyle(
-                fontFamily: "OpenSans",
-                fontWeight: FontWeight.bold,
-                fontSize: 15,
-              ),
-              bodyText2: TextStyle(
-                fontFamily: "OpenSans",
-                fontWeight: FontWeight.w500,
-                fontSize: 10,
-                color: Colors.grey[600],
-              ),
+            headline6: TextStyle(
+              fontFamily: "OpenSans",
+              fontWeight: FontWeight.bold,
+              fontSize: 15,
             ),
+            bodyText2: TextStyle(
+              fontFamily: "OpenSans",
+              fontWeight: FontWeight.w500,
+              fontSize: 10,
+              color: Colors.grey[600],
+            ),
+            button: TextStyle(color: Colors.white)),
         appBarTheme: AppBarTheme(
           titleTextStyle: ThemeData.light()
               .textTheme
