@@ -21,14 +21,15 @@ class Chart extends StatelessWidget {
         }
       }
       return {
-        'day': DateFormat.E(weekDay),
-        'amount': 9.99,
+        'day': DateFormat.E().format(weekDay),
+        'amount': totalSum,
       };
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    print(groupedTransactionValues);
     return Card(
       elevation: 6,
       margin: EdgeInsets.all(10),
