@@ -22,9 +22,10 @@ class ChartBar extends StatelessWidget {
             children: [
               Container(
                 decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey, width: 1),
-                    borderRadius: BorderRadius.circular(10)),
-                color: Color.fromRGBO(220, 220, 220, 1),
+                  border: Border.all(color: Colors.grey, width: 1),
+                  borderRadius: BorderRadius.circular(10),
+                  color: Color.fromRGBO(220, 220, 220, 1),
+                ),
               ),
               FractionallySizedBox(
                 heightFactor: spendingPctOfTotal,
@@ -41,7 +42,7 @@ class ChartBar extends StatelessWidget {
           height: 4,
         ),
         Text(
-          "${spendingPctOfTotal.toStringAsFixed(2)}%",
+          "${label.substring(0, 1)}",
           style: TextStyle(fontSize: 12),
         ),
       ],
