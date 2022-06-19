@@ -41,79 +41,82 @@ class _NewTransactionState extends State<NewTransaction> {
       elevation: 5,
       child: Container(
         padding: EdgeInsets.all(10),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.end, children: <
-            Widget>[
-          TextField(
-            decoration: InputDecoration(
-                labelText: "Title",
-                labelStyle: TextStyle(color: Colors.green[800]),
-                enabledBorder: UnderlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Color.fromARGB(255, 46, 125, 50))),
-                focusedBorder: UnderlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Color.fromARGB(255, 46, 125, 50)))),
-            cursorColor: Colors.green[600],
-            controller: titleController,
-            onSubmitted: (_) {
-              submitData();
-            },
-            // onChanged: (val) {
-            //   titleInput = val;
-            // },
-          ),
-          TextField(
-            decoration: InputDecoration(
-                labelText: "Amount",
-                labelStyle: TextStyle(color: Colors.green[800]),
-                enabledBorder: UnderlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Color.fromARGB(255, 46, 125, 50))),
-                focusedBorder: UnderlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Color.fromARGB(255, 46, 125, 50)))),
-            cursorColor: Colors.green[600],
-            controller: amountController,
-            keyboardType: TextInputType.number,
-            onSubmitted: (_) {
-              submitData();
-            },
-            // we use _ when flutter needs a parameter but we don't need it
-            // onChanged: (val) => amountInput = val,
-          ),
-          Container(
-            height: 70,
-            child: Row(
-              children: <Widget>[
-                Text("No Date Chosen!"),
-                TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      "Choose Date",
-                      style: TextStyle(
-                          color: Theme.of(context).primaryColor,
-                          fontWeight: FontWeight.bold),
-                    )),
-              ],
-            ),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              submitData();
-            },
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(
-                Theme.of(context).primaryColor,
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: <Widget>[
+              TextField(
+                decoration: InputDecoration(
+                    labelText: "Title",
+                    labelStyle:
+                        TextStyle(color: Theme.of(context).primaryColorDark),
+                    enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Theme.of(context).primaryColorLight)),
+                    focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Theme.of(context).primaryColorLight))),
+                cursorColor: ThemeData.light().textSelectionTheme.cursorColor,
+                controller: titleController,
+                onSubmitted: (_) {
+                  submitData();
+                },
+                // onChanged: (val) {
+                //   titleInput = val;
+                // },
               ),
-              foregroundColor: MaterialStateProperty.all(
-                Colors.white,
+              TextField(
+                decoration: InputDecoration(
+                    labelText: "Amount",
+                    labelStyle:
+                        TextStyle(color: Theme.of(context).primaryColorDark),
+                    enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Theme.of(context).primaryColorLight)),
+                    focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Theme.of(context).primaryColorLight))),
+                cursorColor: ThemeData.light().textSelectionTheme.cursorColor,
+                controller: amountController,
+                keyboardType: TextInputType.number,
+                onSubmitted: (_) {
+                  submitData();
+                },
+                // we use _ when flutter needs a parameter but we don't need it
+                // onChanged: (val) => amountInput = val,
               ),
-            ),
-            child: Text("Add transaction",
-                style: TextStyle(
-                    color: Theme.of(context).textTheme.button!.color)),
-          )
-        ]),
+              Container(
+                height: 70,
+                child: Row(
+                  children: <Widget>[
+                    Text("No Date Chosen!"),
+                    TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          "Choose Date",
+                          style: TextStyle(
+                              color: Theme.of(context).primaryColor,
+                              fontWeight: FontWeight.bold),
+                        )),
+                  ],
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  submitData();
+                },
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(
+                    Theme.of(context).primaryColor,
+                  ),
+                  foregroundColor: MaterialStateProperty.all(
+                    Colors.white,
+                  ),
+                ),
+                child: Text("Add transaction",
+                    style: TextStyle(
+                        color: Theme.of(context).textTheme.button!.color)),
+              )
+            ]),
       ),
     );
   }

@@ -35,6 +35,11 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
         ),
         fontFamily: 'Quicksand',
+        textSelectionTheme: TextSelectionThemeData(
+          cursorColor: Color.fromARGB(255, 38, 56, 39),
+          selectionColor: Color.fromARGB(255, 38, 56, 39),
+          selectionHandleColor: Color.fromARGB(255, 38, 56, 39),
+        ),
         textTheme: ThemeData.light().textTheme.copyWith(
             headline6: TextStyle(
               fontFamily: "OpenSans",
