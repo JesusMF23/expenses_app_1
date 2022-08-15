@@ -14,7 +14,6 @@ class TransactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      height: 400,
       child:
           //if statement to check if the list is empty
           transactions.isEmpty
